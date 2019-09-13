@@ -20,5 +20,7 @@ public interface BrandService {
      * @return
      */
     public PageResult findPage(int pageNum, int pageSize);
+
+    public void add(TbBrand brand);
 }
 
