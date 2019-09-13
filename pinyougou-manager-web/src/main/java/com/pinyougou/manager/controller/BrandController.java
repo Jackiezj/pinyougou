@@ -1,5 +1,7 @@
 package com.pinyougou.manager.controller;
 import java.util.List;
+
+import entity.PageResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.alibaba.dubbo.config.annotation.Reference;
@@ -21,6 +23,11 @@ public class BrandController {
     @RequestMapping("/findAll")
     public List<TbBrand> findAll(){
         return brandService.findAll();
+    }
+
+    @RequestMapping("/findPage")
+    public PageResult findPage(int page, int rows) {
+        return brandService.findPage(page, rows);
     }
 }
 
