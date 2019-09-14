@@ -1,4 +1,7 @@
-app.controller('brandController', function ($scope, $http, brandService) {
+app.controller('brandController', function ($scope, $http, $controller, brandService) {
+
+    $controller('baseController', {$scope:$scope});  // 继承, 本质上是共用一个scope
+
     $scope.findAll = function() {
         brandService.findAll().success(
             function (response) {
@@ -7,30 +10,6 @@ app.controller('brandController', function ($scope, $http, brandService) {
         );
     };
 
-    //重新加载列表 数据
-    $scope.reloadList=function(){
-        //切换页码
-        $scope.search( $scope.paginationConf.currentPage, $scope.paginationConf.itemsPerPage);
-    }
-    //分页控件配置
-    $scope.paginationConf = {
-        currentPage: 1,
-        totalItems: 10,
-        itemsPerPage: 10,
-        perPageOptions: [10, 20, 30, 40, 50],
-        onChange: function(){
-            $scope.reloadList();//重新加载
-        }
-    };
-    //分页
-    $scope.findPage=function(page,rows){
-        brandService.findPage(page, rows).success(
-            function(response){
-                $scope.list=response.rows;
-                $scope.paginationConf.totalItems=response.total;//更新总记录数
-            }
-        );
-    }
 
     //保存
     $scope.save=function(){
@@ -59,16 +38,6 @@ app.controller('brandController', function ($scope, $http, brandService) {
         );
     }
 
-    $scope.selectIds=[];//选中的ID集合
-    //更新复选
-    $scope.updateSelection = function($event, id) {
-        if($event.target.checked){//如果是被选中,则增加到数组
-            $scope.selectIds.push( id);
-        }else{
-            var idx = $scope.selectIds.indexOf(id);
-            $scope.selectIds.splice(idx, 1);//删除
-        }
-    }
     //批量删除
     $scope.dele=function(){
         //获取选中的复选框
