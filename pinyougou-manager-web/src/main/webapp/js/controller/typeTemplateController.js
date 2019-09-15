@@ -100,4 +100,8 @@ app.controller('typeTemplateController' ,function($scope,$controller   ,typeTemp
 		)
     }
 
+    // 增加扩展属性
+	$scope.addTableRow = function () {
+        $scope.entity.customAttributeItems.push({});
+    }
 });	
