@@ -60,4 +60,6 @@ public interface SpecificationService {
 	public PageResult findPage(TbSpecification specification, int pageNum, int pageSize);
 
 	public void add(Specification specification);
+
+	public List<TbSpecification> selectSpecificationList();
 }

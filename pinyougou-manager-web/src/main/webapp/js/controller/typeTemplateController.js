@@ -1,5 +1,5 @@
  //控制层 
-app.controller('typeTemplateController' ,function($scope,$controller   ,typeTemplateService, brandService){
+app.controller('typeTemplateController' ,function($scope,$controller   ,typeTemplateService, brandService, specificationService){
 	
 	$controller('baseController',{$scope:$scope});//继承
 	
@@ -90,5 +90,14 @@ app.controller('typeTemplateController' ,function($scope,$controller   ,typeTemp
     }
 
     // 定义规格下拉列表数据
+    $scope.specificationList={data:[]};//规格列表
+	$scope.specificationList = {data: {}};
+    $scope.findSpecificationList = function () {
+		specificationService.selectSpecificationList().success(
+			function (response) {
+				$scope.specificationList = {data: response};
+            }
+		)
+    }
 
 });	

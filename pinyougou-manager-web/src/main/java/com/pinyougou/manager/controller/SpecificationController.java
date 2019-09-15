@@ -102,7 +102,6 @@ public class SpecificationController {
 	
 		/**
 	 * 查询+分页
-	 * @param brand
 	 * @param page
 	 * @param rows
 	 * @return
@@ -110,6 +109,11 @@ public class SpecificationController {
 	@RequestMapping("/search")
 	public PageResult search(@RequestBody TbSpecification specification, int page, int rows  ){
 		return specificationService.findPage(specification, page, rows);		
+	}
+
+	@RequestMapping("/selectSpecificationList")
+	public List<TbSpecification> selectSpecificationList() {
+		return specificationService.selectSpecificationList();
 	}
 
 }
