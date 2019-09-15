@@ -76,5 +76,9 @@ app.controller('specificationController' ,function($scope,$controller   ,specifi
 			}			
 		);
 	}
-    
+
+	// 新增规格选项栏
+	$scope.addTableRow = function () {
+		$scope.entity.specificationOptionList.push({})
+    }
 });	
