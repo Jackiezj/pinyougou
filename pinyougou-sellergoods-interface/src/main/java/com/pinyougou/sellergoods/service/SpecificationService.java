@@ -2,6 +2,7 @@ package com.pinyougou.sellergoods.service;
 import java.util.List;
 import com.pinyougou.pojo.TbSpecification;
 
+import com.pinyougou.pojogroup.Specification;
 import entity.PageResult;
 /**
  * 服务层接口
@@ -57,5 +58,6 @@ public interface SpecificationService {
 	 * @return
 	 */
 	public PageResult findPage(TbSpecification specification, int pageNum, int pageSize);
-	
+
+	public void add(Specification specification);
 }
