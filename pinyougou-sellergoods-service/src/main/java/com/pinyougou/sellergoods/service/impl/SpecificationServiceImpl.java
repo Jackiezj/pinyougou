@@ -61,8 +61,18 @@ public class SpecificationServiceImpl implements SpecificationService {
 	 * 修改
 	 */
 	@Override
-	public void update(TbSpecification specification){
-		specificationMapper.updateByPrimaryKey(specification);
+	public void update(Specification specification){
+		// 保存修改的规格
+		specificationMapper.updateByPrimaryKey(specification.getSpecification());
+		// 删除原来的规格选项
+		TbSpecificationOptionExample example = new TbSpecificationOptionExample();
+		TbSpecificationOptionExample.Criteria criteria = example.createCriteria();
+		criteria.andSpecIdEqualTo(specification.getSpecification().getId());
+		specificationOptionMapper.deleteByExample(example);
+		// 保存新的规格选项
+		for (TbSpecificationOption option: specification.getSpecificationOptionList()) {
+		    specificationOptionMapper.insert(option);
+		}
 	}	
 	
 	/**
