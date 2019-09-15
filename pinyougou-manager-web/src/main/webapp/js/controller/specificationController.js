@@ -80,5 +80,10 @@ app.controller('specificationController' ,function($scope,$controller   ,specifi
 	// 新增规格选项栏
 	$scope.addTableRow = function () {
 		$scope.entity.specificationOptionList.push({})
+    };
+
+    // 删除规格选项栏
+	$scope.deleTableRows = function (index) {
+		$scope.entity.specificationOptionList.splice(index, 1);
     }
 });	
