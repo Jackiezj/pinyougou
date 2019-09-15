@@ -150,7 +150,7 @@
 			<table class="table table-bordered table-striped"  width="800px">
 		      	<tr>
 		      		<td>商品类型</td>
-		      		<td><input  class="form-control" placeholder="商品类型">  </td>
+		      		<td><input ng-model="entity.name"  class="form-control" placeholder="商品类型">  </td>
 		      	</tr>			   
 		      	<tr>
 		      		<td>关联品牌</td>
@@ -166,7 +166,7 @@
 		      	<tr>
 		      		<td>关联规格</td>
 		      		<td>
-						<input select2 select2-model="entity.specificationIds" config="specificationList" multiple placeholder="选择规格（可多选）" class="form-control" type="text">
+						<input select2 select2-model="entity.specIds" config="specificationList" multiple placeholder="选择规格（可多选）" class="form-control" type="text">
 		      		</td>
 		      	</tr>	
 		      	
@@ -211,7 +211,7 @@
 			
 		</div>
 		<div class="modal-footer">						
-			<button class="btn btn-success" data-dismiss="modal" aria-hidden="true">保存</button>
+			<button ng-click="save()" class="btn btn-success" data-dismiss="modal" aria-hidden="true">保存</button>
 			<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
 		</div>
 	  </div>
