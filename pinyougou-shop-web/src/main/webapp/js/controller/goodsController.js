@@ -42,7 +42,9 @@ app.controller('goodsController' ,function($scope,$controller   ,goodsService){
 		serviceObject.success(
 			function(response){
 				if(response.success){
-					//重新查询 
+                    $scope.entity={};
+                    editor.html('');//清空富文本编辑器
+                    //重新查询
 		        	$scope.reloadList();//重新加载
 				}else{
 					alert(response.message);
