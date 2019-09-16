@@ -86,5 +86,29 @@ app.controller('itemCatController' ,function($scope,$controller   ,itemCatServic
         );
     }
 
+    $scope.grand=1;//默认为1级
+    //设置级别
+    $scope.setGrand=function(value){
+        $scope.grand=value;
+    }
+
+
+    //读取列表
+    $scope.selectList=function(p_entity){
+        if($scope.grand==1){//如果为1级
+            $scope.entity_1=null;
+            $scope.entity_2=null;
+        }
+        if($scope.grand==2){//如果为2级
+            $scope.entity_1=p_entity;
+            $scope.entity_2=null;
+        }
+        if($scope.grand==3){//如果为3级
+            $scope.entity_2=p_entity;
+        }
+        $scope.findByParentId(p_entity.id);	//查询此级下级列表
+    }
+
+
 
 });	
