@@ -32,7 +32,9 @@
 
     <!-- 认证管理器 -->
     <authentication-manager>
-        <authentication-provider user-service-ref="userDetailService"></authentication-provider>
+        <authentication-provider user-service-ref="userDetailService">
+            <password-encoder ref="bcryptEncoder"></password-encoder>
+        </authentication-provider>
         <!--<authentication-provider>-->
             <!--<user-service>-->
                 <!--<user name="admin" password="123456" authorities="ROLE_ADMIN"/>-->
@@ -49,6 +51,9 @@
     <beans:bean id="userDetailService" class="com.pinyougou.service.UserDetailsServiceImpl">
         <beans:property name="sellerService" ref="sellerService"></beans:property>
     </beans:bean>
+    <beans:bean id="bcryptEncoder"
+                class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+
 
 
 </beans:beans>
