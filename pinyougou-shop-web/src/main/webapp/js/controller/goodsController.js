@@ -37,6 +37,8 @@ app.controller('goodsController' ,function($scope,$controller   ,goodsService){
 		if($scope.entity.id!=null){//如果有ID
 			serviceObject=goodsService.update( $scope.entity ); //修改  
 		}else{
+			// 提取kindeditor编辑器的内容
+            $scope.entity.goodsDesc.introduction=editor.html();
 			serviceObject=goodsService.add( $scope.entity  );//增加 
 		}				
 		serviceObject.success(
