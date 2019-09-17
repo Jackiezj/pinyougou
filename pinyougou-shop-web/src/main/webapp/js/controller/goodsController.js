@@ -96,5 +96,16 @@ app.controller('goodsController' ,function($scope,$controller   ,goodsService, u
         });
     };
 
+    $scope.entity={goods:{},goodsDesc:{itemImages:[]}};//定义页面实体结构
+    //添加图片列表
+    $scope.add_image_entity=function(){
+        $scope.entity.goodsDesc.itemImages.push($scope.image_entity);
+    }
+
+    //列表中移除图片
+    $scope.remove_image_entity=function(index){
+        $scope.entity.goodsDesc.itemImages.splice(index,1);
+    }
+
 
 });	
