@@ -173,6 +173,26 @@ app.controller('goodsController' ,function($scope,$controller   ,goodsService, u
         );
     });
 
+    $scope.entity={ goodsDesc:{itemImages:[],specificationItems:[]}  };
+
+    $scope.updateSpecAttribute=function($event,name,value){
+        var object= $scope.searchObjectByKey(
+            $scope.entity.goodsDesc.specificationItems ,'attributeName', name);
+        if(object!=null){
+            if($event.target.checked ){
+                object.attributeValue.push(value);
+            }else{//取消勾选				object.attributeValue.splice( object.attributeValue.indexOf(value ) ,1);//移除选项
+                //如果选项都取消了，将此条记录移除
+                if(object.attributeValue.length==0){
+                    $scope.entity.goodsDesc.specificationItems.splice(
+                        $scope.entity.goodsDesc.specificationItems.indexOf(object),1);
+                }
+            }
+        }else{
+            $scope.entity.goodsDesc.specificationItems.push(
+                {"attributeName":name,"attributeValue":[value]});
+        }
+    }
 
 
 });	
